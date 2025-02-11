@@ -1,0 +1,4 @@
+# Ignore unnecessary files
+__pycache__/  
+*.csv  
+*.ipynb_checkpoints/  

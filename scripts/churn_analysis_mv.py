@@ -41,7 +41,7 @@ df["TotalCharges"] = pd.to_numeric(df["TotalCharges"], errors="coerce")
 df["TotalCharges"] = df["TotalCharges"].fillna(0)
 
 print(df.isnull().sum())
-'''
+
 
 # Check unique values in categorical columns
 categorical_columns = ["Partner", "Dependents", "PhoneService", "MultipleLines", 
@@ -53,6 +53,11 @@ categorical_columns = ["Partner", "Dependents", "PhoneService", "MultipleLines",
 for col in categorical_columns:
     print(f"Unique values in {col}: {df[col].unique()}")
 
+# If inconsistencies (like Yes, yes, No, no), convert them to lowercase and standardize them
+# Standardize categorical values
+df[categorical_columns] = df[categorical_columns].apply(lambda x: x.str.strip().str.lower())
+# Now, all categorical values are consistent (yes/no instead of variations)
+'''
 ## Convert Categorical Variables
 
 # Convert 'Churn' column to binary (Yes = 1, No = 0)
